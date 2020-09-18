@@ -4,7 +4,6 @@ A Node.js interface to the `exiftool` command-line application. TypeScript fork 
 
 [![npm version](https://badge.fury.io/js/node-exiftool.svg)](https://badge.fury.io/js/node-exiftool-ts)
 [![Build Status](https://travis-ci.org/szTheory/node-exiftool.svg?branch=master)](https://travis-ci.org/szTheory/node-exiftool-ts)
-[![Build status](https://ci.appveyor.com/api/projects/status/97p9ur4loqrmfog6/branch/master?svg=true)](https://ci.appveyor.com/project/szTheory/node-exiftool-ts/branch/master)
 
 [Exiftool](http://www.sno.phy.queensu.ca/~phil/exiftool/) is an amazing tool
 written by Phil Harvey in Perl which can read and write metadata to a number of
