@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "is-stream": "1.1.0",
-    "restream": "1.2.0",
-    "wrote": "^1.0.0"
+    "restream": "^4.0.0",
+    "wrote": "^1.4.0"
   }
 }
