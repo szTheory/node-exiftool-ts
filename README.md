@@ -684,9 +684,7 @@ Exiftool Open was faster by 471%
 
 ## Testing
 
-We're using [`exiftool-context`](https://www.npmjs.com/package/exiftool-context) to test with [`zoroaster`](https://www.npmjs.com/package/zoroaster).
-
-Make sure to do the following in tests, when testing current version:
+We're using [`exiftool-context`](https://www.npmjs.com/package/exiftool-context) to test with [`zoroaster`](https://www.npmjs.com/package/zoroaster). Make sure to do the following in tests, when testing current version:
 
 ```js
 const context = require('exiftool-context')
@@ -697,12 +695,6 @@ context.globalExiftoolConstructor = exiftool.ExiftoolProcess
 
 Otherwise, the context will use a stable version which it installs
 independently.
-
-## Metadata
-
-Metadata is awesome and although it can increase the file size, it preserves
-copyright and allows to find out additional information and the author of an
-image/movie. Let's all use metadata.
 
 ## Resources
 [Exiftool Documentation](http://www.sno.phy.queensu.ca/~phil/exiftool/exiftool_pod.html)
