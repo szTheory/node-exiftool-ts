@@ -23,12 +23,24 @@ const exiftoolTestSuite = {
       });
     },
     "returns rejected promise when exiftool executable not found": (ctx) => {
+      return ctx.createOpen("./notexiftool").then(
+        () => {
+          throw new Error("open should have resulted in error");
+        },
+        (err) => {
+          assert.equal(err.message, "spawn ./notexiftool ENOENT");
+        }
+      );
+    },
+    "returns rejected promise when exiftool executable directory not found": (
+      ctx
+    ) => {
       return ctx.createOpen("notexiftool").then(
         () => {
           throw new Error("open should have resulted in error");
         },
         (err) => {
-          assert.equal(err.message, "spawn notexiftool ENOENT");
+          assert.equal(err.message, "spawn ENOTDIR");
         }
       );
     },

@@ -33,9 +33,9 @@
     "cross-env": "5.0.0",
     "exiftool-context": "1.4.0",
     "makepromise": "1.0.0",
+    "prettier": "^2.1.2",
     "ps-node": "0.1.6",
-    "zoroaster": "0.4.6",
-    "prettier": "^2.1.2"
+    "zoroaster": "0.4.6"
   },
   "dependencies": {
     "is-stream": "1.1.0",

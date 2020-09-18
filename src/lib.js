@@ -167,11 +167,18 @@ function isWritable(stream) {
  */
 function spawn(bin, options) {
   const echoString = Date.now().toString();
-  const proc = cp.spawn(
-    bin,
-    ["-echo2", echoString, "-stay_open", "True", "-@", "-"],
-    options
-  );
+
+  let proc = null;
+  try {
+    proc = cp.spawn(
+      bin,
+      ["-echo2", echoString, "-stay_open", "True", "-@", "-"],
+      options
+    );
+  } catch (error) {
+    return Promise.reject(error);
+  }
+
   if (!isReadable(proc.stderr)) {
     killProcess(proc);
     return Promise.reject(
