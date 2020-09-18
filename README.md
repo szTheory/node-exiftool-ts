@@ -148,8 +148,7 @@ then pass the path to `exiftool`. After the result is received from `exiftool`,
 the  temp file will be removed.
 
 ```javascript
-const exiftoolBin = require('dist-exiftool')
-const exiftool =  require('exiftool')
+const exiftool = require('exiftool')
 const fs = require('fs')
 const path = require('path')
 
