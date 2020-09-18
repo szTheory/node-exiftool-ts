@@ -1,6 +1,8 @@
 # node-exiftool-ts
 
-A Node.js interface to the `exiftool` command-line application. TypeScript fork of the still serviceable but seemingly unmaintained [node-exiftool](https://github.com/szTheory/node-exiftool). The goal of this project is to upgrade it to TypeScript for the benefits of static code analysis, remove all external dependencies, and streamline the interface for the purposes of the GUI app [ExifCleaner](https://exifcleaner.com).
+>Node.js interface to the `exiftool` command-line application
+
+This is a TypeScript fork of the still serviceable but seemingly unmaintained [node-exiftool](https://github.com/szTheory/node-exiftool). The goal of this project is to upgrade it to TypeScript for the benefits of static code analysis, remove all external dependencies, and streamline the interface for the purposes of the [ExifCleaner](https://exifcleaner.com) GUI app.
 
 [![npm version](https://badge.fury.io/js/node-exiftool.svg)](https://badge.fury.io/js/node-exiftool-ts)
 [![Build Status](https://travis-ci.org/szTheory/node-exiftool.svg?branch=master)](https://travis-ci.org/szTheory/node-exiftool-ts)
