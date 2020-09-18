@@ -1,7 +1,8 @@
 The MIT License (MIT)
 
-Copyright (c) 2020 szTheory
-Original node-exiftool code copyright (c) 2016 Sobesednik Media
+Copyright (c) szTheory
+Original node-exiftool code copyright (c) Sobesednik Media
+Original is-stream code copyright (c) Sindre Sorhus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

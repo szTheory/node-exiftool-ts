@@ -2,7 +2,7 @@
 
 const cp = require("child_process");
 const EOL = require("os").EOL;
-const isStream = require("is-stream");
+const isStream = require("./is-stream");
 
 function writeStdIn(proc, data, encoding) {
   // console.log('write stdin', data)
