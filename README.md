@@ -1,10 +1,10 @@
-# node-exiftool
+# node-exiftool-ts
 
-A Node.js interface to the *exiftool* command-line application.
+A Node.js interface to the `exiftool` command-line application. TypeScript fork of the still serviceable but seemingly unmaintained [node-exiftool](https://github.com/szTheory/node-exiftool). The goal of this project is to upgrade it to TypeScript for the benefits of static code analysis, remove all external dependencies, and streamline the interface for the purposes of the GUI app [ExifCleaner](https://exifcleaner.com).
 
-[![npm version](https://badge.fury.io/js/node-exiftool.svg)](https://badge.fury.io/js/node-exiftool)
-[![Build Status](https://travis-ci.org/Sobesednik/node-exiftool.svg?branch=master)](https://travis-ci.org/Sobesednik/node-exiftool)
-[![Build status](https://ci.appveyor.com/api/projects/status/97p9ur4loqrmfog6/branch/master?svg=true)](https://ci.appveyor.com/project/zavr-1/node-exiftool/branch/master)
+[![npm version](https://badge.fury.io/js/node-exiftool.svg)](https://badge.fury.io/js/node-exiftool-ts)
+[![Build Status](https://travis-ci.org/szTheory/node-exiftool.svg?branch=master)](https://travis-ci.org/szTheory/node-exiftool-ts)
+[![Build status](https://ci.appveyor.com/api/projects/status/97p9ur4loqrmfog6/branch/master?svg=true)](https://ci.appveyor.com/project/szTheory/node-exiftool-ts/branch/master)
 
 [Exiftool](http://www.sno.phy.queensu.ca/~phil/exiftool/) is an amazing tool
 written by Phil Harvey in Perl which can read and write metadata to a number of
@@ -13,11 +13,7 @@ orientation from JPEG files uploaded to your server by users to rotate generated
 previews accordingly, as well as appending copyright information to photos using
 [IPTC standard](https://iptc.org/standards/photo-metadata/iptc-standard/).
 
-> _exiftool_ is not distributed with _node-exiftool_. The module will try to
-> spawn `exiftool`, therefore you must install it manually. You can also use
-> [dist-exiftool](https://www.npmjs.com/package/dist-exiftool) package which
-> will install _exiftool_ distribution appropriate for your platform. See below
-> for details about how to use `node-exiftool` with `dist-exiftool`.
+Note that the `exiftool` Perl binary is not distributed with `node-exiftool-ts`. The `node-exiftool-ts` module will try to spawn `exiftool`, therefore you must install it manually and specify the path to the binary.
 
 ## Usage
 
@@ -33,7 +29,7 @@ By default, the executable is hard-coded to be just `exiftool`. You must have it
 you path for this method to work.
 
 ```javascript
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess()
 ```
 
@@ -42,23 +38,8 @@ const ep = new exiftool.ExiftoolProcess()
 It is possible to specify a custom executable.
 
 ```javascript
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess('/usr/local/exiftool')
-```
-
-### dist-exiftool
-
-Or you can install `dist-exiftool`, which allows to install `exiftool` from
-_npm_.
-
-```bash
-npm i --save dist-exiftool
-```
-
-```javascript
-const exiftool = require('node-exiftool')
-const exiftoolBin = require('dist-exiftool')
-const ep = new exiftool.ExiftoolProcess(exiftoolBin)
 ```
 
 ### Opening and Closing
@@ -68,7 +49,7 @@ finished working with it, it should be closed, when `-stay_open False` will be
 written to its _stdin_ to exit the process.
 
 ```javascript
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess()
 
 ep
@@ -85,7 +66,7 @@ ep
 object which will passed to the `spawn` method.
 
 ```javascript
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const options = {
   detached: true,
   env: Object.assign({}, process.env, {
@@ -110,7 +91,7 @@ You are required to open the *exiftool* process first, after which you will be a
 read and write metadata.
 
 ```javascript
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess()
 
 ep
@@ -161,7 +142,7 @@ Closed exiftool
 ### Reading Metadata from a Readable Stream
 
 You can read metadata from a stream the same way you read a file metadata.
-`node-exiftool` will create a temporary file and pipe your `Readable` into it,
+`node-exiftool-ts` will create a temporary file and pipe your `Readable` into it,
 then pass the path to `exiftool`. After the result is received from `exiftool`,
 the  temp file will be removed.
 
@@ -203,7 +184,7 @@ ep.open()
 
 ### Writing Metadata
 
-You can write metadata with `node-exiftool`. The API is:
+You can write metadata with `node-exiftool-ts`. The API is:
 `ep.writeMetadata(file:string, data:object, args:array)`,
 where `file` is a path to the file, `data` is metadata to add, e.g.,
 
@@ -218,7 +199,7 @@ const data = {
 and `args` is an array of any other arguments you wish to pass, e.g,. `['overwrite_original']`.
 
 ```javascript
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess()
 
 ep
@@ -240,7 +221,7 @@ ep
 ### Reading Directory
 
 ```javascript
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess()
 
 ep
@@ -286,7 +267,7 @@ ep
 ### Reading Non-existent File
 
 ```javascript
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess()
 
 ep
@@ -311,7 +292,7 @@ You can pass arguments which you wish to use in the *exiftool* command call. The
 be automatically prepended with the `-` sign so you don't have to do it manually.
 
 ```javascript
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess()
 
 ep
@@ -338,7 +319,7 @@ ep
 ```
 
 ```javascript
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess()
 
 ep
@@ -377,7 +358,7 @@ ep
 ### Reading HTML
 
 ```javascript
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess()
 
 ep
@@ -421,7 +402,7 @@ You can also listen for `OPEN` and `EXIT` events. For example, if the exiftool p
 crashed, you might want to restart it.
 
 ```javascript
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const cp = require('child_process')
 
 function killProcess(name) {
@@ -473,7 +454,7 @@ it as a string.
 [Node's supported encodings](https://github.com/nodejs/node/blob/master/lib/net.js#L789).
 
 ```js
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess()
 
 Promise.resolve()
@@ -502,7 +483,7 @@ explicitly pass `codedcharacterset=utf8` argument. For example,
 to write it in _utf8_, do the following:
 
 ```js
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess()
 
 const metadata = {
@@ -565,7 +546,7 @@ An error you can see is: `File not found: Fọto.jpg` or whatever filename you
 have. To fix it, set filename charset to `utf8`.
 
 ```js
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess()
 
 ep
@@ -601,7 +582,7 @@ Example output: `Active code page: 437`. `utf8`'s number is `65001` (on win)
 For example, when trying to write metadata:
 
 ```js
-const exiftool = require('node-exiftool')
+const exiftool = require('node-exiftool-ts')
 const ep = new exiftool.ExiftoolProcess()
 
 ep
@@ -665,28 +646,28 @@ fixtures. Here are some of our results:
 ```
 > node benchmark/run
 
-/node-exiftool/benchmark/photos/IMG_3051.JPG: 168ms
-/node-exiftool/benchmark/photos/IMG_3052.JPG: 166ms
-/node-exiftool/benchmark/photos/IMG_3053.JPG: 168ms
-/node-exiftool/benchmark/photos/IMG_3054.JPG: 166ms
-/node-exiftool/benchmark/photos/IMG_3055.JPG: 165ms
-/node-exiftool/benchmark/photos/IMG_3056.JPG: 158ms
-/node-exiftool/benchmark/photos/IMG_3057.JPG: 158ms
-/node-exiftool/benchmark/photos/IMG_3058.JPG: 162ms
-/node-exiftool/benchmark/photos/IMG_3059.JPG: 158ms
-/node-exiftool/benchmark/photos/IMG_3060.JPG: 158ms
-/node-exiftool/benchmark/photos/IMG_3061.JPG: 157ms
-/node-exiftool/benchmark/photos/IMG_3051.JPG: 65ms
-/node-exiftool/benchmark/photos/IMG_3052.JPG: 20ms
-/node-exiftool/benchmark/photos/IMG_3053.JPG: 22ms
-/node-exiftool/benchmark/photos/IMG_3054.JPG: 23ms
-/node-exiftool/benchmark/photos/IMG_3055.JPG: 22ms
-/node-exiftool/benchmark/photos/IMG_3056.JPG: 22ms
-/node-exiftool/benchmark/photos/IMG_3057.JPG: 22ms
-/node-exiftool/benchmark/photos/IMG_3058.JPG: 22ms
-/node-exiftool/benchmark/photos/IMG_3059.JPG: 20ms
-/node-exiftool/benchmark/photos/IMG_3060.JPG: 21ms
-/node-exiftool/benchmark/photos/IMG_3061.JPG: 20ms
+/node-exiftool-ts/benchmark/photos/IMG_3051.JPG: 168ms
+/node-exiftool-ts/benchmark/photos/IMG_3052.JPG: 166ms
+/node-exiftool-ts/benchmark/photos/IMG_3053.JPG: 168ms
+/node-exiftool-ts/benchmark/photos/IMG_3054.JPG: 166ms
+/node-exiftool-ts/benchmark/photos/IMG_3055.JPG: 165ms
+/node-exiftool-ts/benchmark/photos/IMG_3056.JPG: 158ms
+/node-exiftool-ts/benchmark/photos/IMG_3057.JPG: 158ms
+/node-exiftool-ts/benchmark/photos/IMG_3058.JPG: 162ms
+/node-exiftool-ts/benchmark/photos/IMG_3059.JPG: 158ms
+/node-exiftool-ts/benchmark/photos/IMG_3060.JPG: 158ms
+/node-exiftool-ts/benchmark/photos/IMG_3061.JPG: 157ms
+/node-exiftool-ts/benchmark/photos/IMG_3051.JPG: 65ms
+/node-exiftool-ts/benchmark/photos/IMG_3052.JPG: 20ms
+/node-exiftool-ts/benchmark/photos/IMG_3053.JPG: 22ms
+/node-exiftool-ts/benchmark/photos/IMG_3054.JPG: 23ms
+/node-exiftool-ts/benchmark/photos/IMG_3055.JPG: 22ms
+/node-exiftool-ts/benchmark/photos/IMG_3056.JPG: 22ms
+/node-exiftool-ts/benchmark/photos/IMG_3057.JPG: 22ms
+/node-exiftool-ts/benchmark/photos/IMG_3058.JPG: 22ms
+/node-exiftool-ts/benchmark/photos/IMG_3059.JPG: 20ms
+/node-exiftool-ts/benchmark/photos/IMG_3060.JPG: 21ms
+/node-exiftool-ts/benchmark/photos/IMG_3061.JPG: 20ms
 
 Exiftool
 Read 11 files
@@ -703,8 +684,7 @@ Exiftool Open was faster by 471%
 
 ## Testing
 
-We're using [`exiftool-context`](https://www.npmjs.com/package/exiftool-context)
-to test with [`zoroaster`](https://www.npmjs.com/package/zoroaster).
+We're using [`exiftool-context`](https://www.npmjs.com/package/exiftool-context) to test with [`zoroaster`](https://www.npmjs.com/package/zoroaster).
 
 Make sure to do the following in tests, when testing current version:
 
