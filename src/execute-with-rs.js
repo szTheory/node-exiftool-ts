@@ -1,5 +1,5 @@
 "use strict";
-const wrote = require("wrote");
+const { createWritable, erase } = require("wrote");
 const Readable = require("stream").Readable;
 
 /**
@@ -16,7 +16,7 @@ function executeWithRs(rs, args, executeCommand) {
     return Promise.reject(new Error("executeCommand must be a function"));
   }
   let ws;
-  return wrote() // temp file will be created
+  return createWritable() // temp file will be created
     .then((res) => {
       ws = res;
       rs.pipe(ws);
@@ -24,12 +24,12 @@ function executeWithRs(rs, args, executeCommand) {
     })
     .then(
       (res) => {
-        return wrote.erase(ws).then(() => {
+        return erase(ws).then(() => {
           return res;
         });
       },
       (err) => {
-        return wrote.erase(ws).then(() => {
+        return erase(ws).then(() => {
           throw err;
         });
       }
