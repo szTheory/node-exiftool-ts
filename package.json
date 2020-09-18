@@ -1,6 +1,6 @@
 {
-  "name": "node-exiftool",
-  "version": "2.3.0",
+  "name": "node-exiftool-ts",
+  "version": "3.0.0",
   "description": "A Node.js interface to exiftool command-line application.",
   "main": "src/index.js",
   "files": [
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sobesednik/node-exiftool.git"
+    "url": "git+https://github.com/szTheory/node-exiftool-ts.git"
   },
   "keywords": [
     "metadata",
@@ -23,12 +23,12 @@
     "IPTC",
     "XMP"
   ],
-  "author": "Anton <anton@sobesednik.media>",
+  "author": "szTheory",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Sobesednik/node-exiftool/issues"
+    "url": "https://github.com/szTheory/node-exiftool-ts/issues"
   },
-  "homepage": "https://github.com/Sobesednik/node-exiftool#readme",
+  "homepage": "https://github.com/szTheory/node-exiftool-ts",
   "devDependencies": {
     "cross-env": "5.0.0",
     "exiftool-context": "1.4.0",
