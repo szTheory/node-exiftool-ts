@@ -1,5 +1,6 @@
 "use strict";
-const { createWritable, erase } = require("wrote");
+const createWritable = require("./file/create-writable");
+const erase = require("./file/erase");
 const Readable = require("stream").Readable;
 
 /**

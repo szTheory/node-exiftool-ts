@@ -32,13 +32,13 @@
   "devDependencies": {
     "cross-env": "5.0.0",
     "exiftool-context": "1.4.0",
+    "lockfile": "^1.0.4",
     "makepromise": "1.0.0",
     "prettier": "^2.1.2",
     "ps-node": "0.1.6",
     "zoroaster": "0.4.6"
   },
   "dependencies": {
-    "restream": "^4.0.0",
-    "wrote": "^1.4.0"
+    "restream": "^4.0.0"
   }
 }
